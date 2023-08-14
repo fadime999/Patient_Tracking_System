@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Patient_Tracking_System.Models.Visit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Visits List</h2>
+<hr />
+<p>
+    @Html.ActionLink("Add a new visit ", "Create", null, new { @class = "btn btn-primary btn-xs" })
+</p>
+<hr />
+
+
+<table class="table table-bordered table-hover table-striped">
+    <tr>
+        <th style="width:%30;">
+            @Html.DisplayNameFor(model => model.VisitDate)
+        </th>
+        <th style="width:%50;">
+            @Html.DisplayNameFor(model => model.DoctorName)
+        </th>
+        <th style="width:%5;">
+            @Html.DisplayNameFor(model => model.Complaint)
+        </th>
+        <th style="width:%5;">
+            @Html.DisplayNameFor(model => model.TreatmentModalities)
+        </th>
+        <th style="width:%5;">
+            @Html.DisplayNameFor(model => model.Patient.NameSurname)
+        </th>
+        <th style="width:190px;"></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.VisitDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DoctorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Complaint)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TreatmentModalities)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.NameSurname)
+            </td>
+   
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.VisitId }, new { @class = "btn btn-warning btn-sm" })
+                @Html.ActionLink("Details", "Details", new { id = item.VisitId }, new { @class = "btn btn-primary btn-sm" })
+                @Html.ActionLink("Delete", "Delete", new { id = item.VisitId }, new { @class = "btn btn-danger btn-sm" })
+            </td>
+        </tr>
+    }
+
+</table>
